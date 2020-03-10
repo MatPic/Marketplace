@@ -1,28 +1,34 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 import * as ROUTES from './constants/Routes';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './App.css';
 import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
+import { Layout } from 'antd';
 
-class App extends Components {
+const { Header, Footer, Content } = Layout;
+
+class App extends Component {
   render () {
     return (
-      <React.Fragment>
-        <Navigation/>
-        <hr/>
-        <Router exact path={ ROUTES.LANDING } >
-          <Home/>
-        </Router>
-        <Router exact path={ ROUTES.SIGNIN }>
-          <SignIn/>
-        </Router>
-        <Router exact path={ ROUTES.SIGNUP }>
-          <SignUp/>
-        </Router>
-      </React.Fragment>
+      <Router>
+        <Layout>
+          <Header><Navigation/></Header>
+          <Layout>
+            <Route exact path={ ROUTES.LANDING }>
+              <Home/>
+            </Route>
+            <Route exact path={ ROUTES.SIGNIN }>
+              <SignIn/>
+            </Route>
+            <Route exact path={ ROUTES.SIGNUP }>
+              <SignUp/>
+            </Route>
+          </Layout>
+          <Footer></Footer>
+        </Layout>
+      </Router>
     );
   }
   

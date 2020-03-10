@@ -1,6 +1,6 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 
-class SignUp extends Components {
+class SignUp extends Component {
   
   render () {
       return (

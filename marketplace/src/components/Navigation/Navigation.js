@@ -1,8 +1,8 @@
-import React, { Components } from 'react';
+import React, { Component } from 'react';
 import * as ROUTES from '../../constants/Routes';
 import { Link } from 'react-router-dom';
 
-class Navigation extends Components {
+class Navigation extends Component {
   
   render () {
       return (
