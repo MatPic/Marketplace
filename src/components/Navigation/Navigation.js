@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
 import * as ROUTES from '../../constants/Routes';
 import { Link } from 'react-router-dom';
-import { Menu } from 'antd'
-// import { withFirebase } from '../Firebase/Firebase'
+import { Menu } from 'antd';
+import { withAuthorization } from '../../Authorization'
 
 class Navigation extends Component {
   
-  render (props) {
+  render () {
+    if (this.props.auth.loggedUser) {
+      return (
+        <Menu  mode="horizontal" theme="dark" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
+          <Menu.Item>
+            <Link to={ ROUTES.LANDING }>Accueil</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to={ ROUTES.SIGNIN } onClick={this.props.auth.signOut}>Déconnecter {this.props.auth.loggedUser.user.email}</Link>
+          </Menu.Item>
+        </Menu>
+      );
+    } else {
       return (
         <Menu  mode="horizontal" theme="dark" defaultSelectedKeys={['1']} style={{ lineHeight: '64px' }}>
           <Menu.Item>
@@ -20,8 +32,9 @@ class Navigation extends Component {
           </Menu.Item>
         </Menu>
       );
+    }
   }
   
 }
 
-export default Navigation;
+export default withAuthorization(Navigation);

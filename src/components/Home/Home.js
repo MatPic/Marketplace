@@ -5,7 +5,7 @@ class Home extends Component {
   
   render (props) {
       if (this.props.auth.loggedUser) {
-        return (<h1>"Bienvenue"</h1>);
+        return (<h1>"Bienvenue {this.user}"</h1>);
       } else {
         return (<h1>"Veuillez vous connecter ou vous inscrire"</h1>);
       }

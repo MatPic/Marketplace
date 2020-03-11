@@ -11,8 +11,6 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
 };
 
-console.log(config)
-
 class Firebase {
   loggedUser = undefined;
   
@@ -21,6 +19,7 @@ class Firebase {
       app.initializeApp(config);
     }
     this.auth = firebase.default.auth();
+    this.auth.onAuthUserStateChanged(authStateChanged);
   }
 
   doCreateUserWithEmailAndPassword = (email, password) =>

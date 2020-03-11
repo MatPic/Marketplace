@@ -8,7 +8,7 @@ import SignUp from './components/SignUp/SignUp';
 import { Layout } from 'antd';
 import './App.css';
 import styled from 'styled-components';
-import { AuthorizationProvider, withAuthorizationProvider } from './Authorization';
+import { withAuthorizationProvider } from './Authorization';
 
 const { Header, Footer, Content } = Layout;
 

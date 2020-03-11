@@ -7,22 +7,23 @@ export class AuthorizationProvider extends Component{
     constructor (props) {
         super(props);
         this.firebase = new Firebase();
+        
+        this.state = {
+            firebase: this.firebase,
+            loggedUser: undefined,
+            signIn: (email, password) => {
+                this.firebase.doSignInWithEmailAndPassword(email, password).then(user => {
+                    this.setState({loggedUser: user});
+                });
+            },
+            signUp: (email, password) => {
+                this.firebase.doCreateUserWithEmailAndPassword(email, password).then(user => {
+                    console.log(user);
+                });
+            },
+            signOut: this.firebase.doSignOut
+        };
       }
-    
-    state = {
-        firebase: this.firebase,
-        loggedUser: undefined,
-        signIn: (email, password) => {
-            this.firebase.doSignInWithEmailAndPassword(email, password).then(user => {
-                this.setState({loggedUser: user});
-            });
-        },
-        signUp: (email, password) => {
-            this.firebase.doCreateUserWithEmailAndPassword(email, password).then(user => {
-                console.log(user);
-            });
-        },
-    }
     render (){
         return(
             <AuthContext.Provider value={this.state}>
