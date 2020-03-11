@@ -6,32 +6,48 @@ import Navigation from './components/Navigation/Navigation';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import { Layout } from 'antd';
+import './App.css';
+import styled from 'styled-components';
+import { AuthorizationProvider, withAuthorizationProvider } from './Authorization';
+// import Firebase, { FirebaseContext } from './components/Firebase/Firebase';
 
 const { Header, Footer, Content } = Layout;
+
+const SiteLayoutContent = styled.div`
+  background: #fff;
+  padding: 24px;
+  min-height: 280px;
+`;
+
+// const firebase = new Firebase();
 
 class App extends Component {
   render () {
     return (
-      <Router>
-        <Layout>
-          <Header><Navigation/></Header>
+      // <FirebaseContext.Provider value={firebase}>
+        <Router>
           <Layout>
-            <Route exact path={ ROUTES.LANDING }>
-              <Home/>
-            </Route>
-            <Route exact path={ ROUTES.SIGNIN }>
-              <SignIn/>
-            </Route>
-            <Route exact path={ ROUTES.SIGNUP }>
-              <SignUp/>
-            </Route>
+            <Header><Navigation/></Header>
+            <Content style={{ padding: '0 50px' }}>
+              <SiteLayoutContent>
+                <Route exact path={ ROUTES.LANDING }>
+                  <Home />
+                </Route>
+                <Route exact path={ ROUTES.SIGNIN }>
+                  <SignIn/>
+                </Route>
+                <Route exact path={ ROUTES.SIGNUP }>
+                  <SignUp/>
+                </Route>
+              </SiteLayoutContent>
+            </Content>
+            <Footer></Footer>
           </Layout>
-          <Footer></Footer>
-        </Layout>
-      </Router>
+        </Router>
+      // </FirebaseContext.Provider>
     );
   }
   
 }
 
-export default App;
+export default withAuthorizationProvider(App);

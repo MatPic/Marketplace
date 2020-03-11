@@ -1,15 +1,19 @@
 import React, { Component } from 'react';
+import { withAuthorization } from '../../Authorization';
 
 class Home extends Component {
   
-  render () {
-      return (
-        <div>
-            <h1>Hello World</h1>
-        </div>
-      );
+  render (props) {
+      if (this.props.auth.loggedUser) {
+        return <h1>"Bienvenue"</h1>
+      } else {
+        return <h1>"Veuillez vous connecter ou vous inscrire"</h1>
+      }
+      // return (
+      //   <h1>{this.props.auth.isLogged ? "Bienvenue" : "Veuillez vous connecter ou vous inscrire"}</h1>
+      // );
   }
   
 }
 
-export default Home;
+export default withAuthorization(Home);
