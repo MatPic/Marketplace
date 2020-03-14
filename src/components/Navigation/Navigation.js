@@ -14,7 +14,10 @@ class Navigation extends Component {
             <Link to={ ROUTES.LANDING }>Accueil</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to={ ROUTES.SIGNIN } onClick={this.props.auth.signOut}>Déconnecter {this.props.auth.loggedUser.user.email}</Link>
+            <Link to={ ROUTES.PANIER }>Panier</Link>
+          </Menu.Item>
+          <Menu.Item>
+            <Link to={ ROUTES.SIGNIN } onClick={this.props.auth.signOut}>Se déconnecter</Link>
           </Menu.Item>
         </Menu>
       );
@@ -25,10 +28,10 @@ class Navigation extends Component {
             <Link to={ ROUTES.LANDING }>Accueil</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to={ ROUTES.SIGNIN }>Se connecter</Link>
+            <Link to={ ROUTES.SIGNUP }>S'inscrire</Link>
           </Menu.Item>
           <Menu.Item>
-            <Link to={ ROUTES.SIGNUP }>S'inscrire</Link>
+            <Link to={ ROUTES.SIGNIN }>Se connecter</Link>
           </Menu.Item>
         </Menu>
       );

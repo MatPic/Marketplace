@@ -3,15 +3,22 @@ import { withAuthorization } from '../../Authorization';
 
 class Home extends Component {
   
-  render (props) {
+  render () {
       if (this.props.auth.loggedUser) {
-        return (<h1>"Bienvenue {this.user}"</h1>);
+        return (
+          <div>
+            <h1>Bienvenue {this.props.auth.loggedUser.email}</h1>
+            <p>Vous pouvez maintenant faire des achats. Bon shopping !</p>
+          </div>
+        );
       } else {
-        return (<h1>"Veuillez vous connecter ou vous inscrire"</h1>);
+        return (
+          <div>
+            <h1>Bienvenue !</h1>
+            <p>Veuillez vous connecter ou vous inscrire pour pouvoir acheter</p>
+          </div>
+        );
       }
-      // return (
-      //   <h1>{this.props.auth.isLogged ? "Bienvenue" : "Veuillez vous connecter ou vous inscrire"}</h1>
-      // );
   }
   
 }

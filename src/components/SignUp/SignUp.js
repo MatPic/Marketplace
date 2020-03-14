@@ -23,7 +23,13 @@ class SignUp extends Component {
   
   render () {
     const onFinish = values => {
-      this.props.auth.signUp(values.username, values.password);
+      this.props.auth.signUp(values.username, values.password).then((user) => {
+          if (user) {
+            this.props.auth.firebase.auth.currentUser.updateProfile({
+              displayName: values.name
+            }).then(() => { this.props.history.push('/') });
+          }
+        });
     };
     
     const onFinishFailed = errorInfo => {

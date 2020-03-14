@@ -9,6 +9,8 @@ import { Layout } from 'antd';
 import './App.css';
 import styled from 'styled-components';
 import { withAuthorizationProvider } from './Authorization';
+import { withArticleProvider } from './components/Panier/Article';
+import Panier from "./components/Panier/Panier";
 
 const { Header, Footer, Content } = Layout;
 
@@ -34,6 +36,9 @@ class App extends Component {
                 </Route>
                 <Route exact path={ ROUTES.SIGNUP }>
                   <SignUp/>
+                </Route>
+                <Route path={ ROUTES.PANIER }>
+                  <Panier />
                 </Route>
               </SiteLayoutContent>
             </Content>

@@ -14,12 +14,12 @@ const config = {
 class Firebase {
   loggedUser = undefined;
   
-  constructor() {
+  constructor(authStateChanged) {
     if(!firebase.apps.length) {
       app.initializeApp(config);
     }
     this.auth = firebase.default.auth();
-    this.auth.onAuthUserStateChanged(authStateChanged);
+    this.auth.onAuthStateChanged(authStateChanged);
   }
 
   doCreateUserWithEmailAndPassword = (email, password) =>
