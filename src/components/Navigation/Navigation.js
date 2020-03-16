@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import * as ROUTES from '../../constants/Routes';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { withAuthorization } from '../../Authorization'
+import { withAuthorization } from '../../Authorization';
 
 class Navigation extends Component {
   

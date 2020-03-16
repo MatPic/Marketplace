@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button } from 'antd';
 import { withAuthorization } from '../../Authorization';
-import { withFirebase } from '../Firebase/Firebase';
+import { withRouter } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -86,4 +86,4 @@ class SignUp extends Component {
   
 }
 
-export default withAuthorization(SignUp);
+export default withAuthorization(withRouter(SignUp));

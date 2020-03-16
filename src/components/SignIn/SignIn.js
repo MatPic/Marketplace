@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { withAuthorization } from '../../Authorization';
-import { withFirebase } from '../Firebase/Firebase';
+import { withRouter } from 'react-router-dom';
 
 const layout = {
   labelCol: {
@@ -23,7 +23,9 @@ class SignIn extends Component {
   
   render () {
     const onFinish = values => {
-      this.props.auth.signIn(values.username, values.password);
+      this.props.auth.signIn(values.username, values.password).then(user => {
+        if (user) this.props.history.push('/');
+      });
     };
     
     const onFinishFailed = errorInfo => {
@@ -84,4 +86,4 @@ class SignIn extends Component {
   
 }
 
-export default withAuthorization(SignIn);
+export default withAuthorization(withRouter(SignIn));

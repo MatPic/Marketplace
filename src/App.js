@@ -10,7 +10,6 @@ import './App.css';
 import styled from 'styled-components';
 import { withAuthorizationProvider } from './Authorization';
 import { withArticleProvider } from './components/Panier/Article';
-import Panier from "./components/Panier/Panier";
 
 const { Header, Footer, Content } = Layout;
 
@@ -37,9 +36,6 @@ class App extends Component {
                 <Route exact path={ ROUTES.SIGNUP }>
                   <SignUp/>
                 </Route>
-                <Route path={ ROUTES.PANIER }>
-                  <Panier />
-                </Route>
               </SiteLayoutContent>
             </Content>
             <Footer></Footer>
@@ -50,4 +46,4 @@ class App extends Component {
   
 }
 
-export default withAuthorizationProvider(App);
+export default withAuthorizationProvider(withArticleProvider(App));

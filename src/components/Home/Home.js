@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { withAuthorization } from '../../Authorization';
+import ArticleList from '../Panier/ArticleList';
+import produits from '../../data/Produits';
 
 class Home extends Component {
   
@@ -9,6 +11,7 @@ class Home extends Component {
           <div>
             <h1>Bienvenue {this.props.auth.loggedUser.email}</h1>
             <p>Vous pouvez maintenant faire des achats. Bon shopping !</p>
+            <ArticleList articlesData={produits}></ArticleList>
           </div>
         );
       } else {

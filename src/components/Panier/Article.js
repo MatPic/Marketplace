@@ -7,15 +7,8 @@ const ArticleProvider = (props) => {
 
   const providedData = {
     get: () => article,
-    
     add: item => {
-      const existingItem = article.find(element => element.id === item.id);
-      if (existingItem) {
-        providedData.increaseQty(existingItem.id);
-      } else {
-        const itemToInsert = { ...item, qty: 1, key: item.id };
-        setArticle([...article, itemToInsert]);
-      }
+        this.setState({article: article + 1});
     },
     
     remove: id => {
